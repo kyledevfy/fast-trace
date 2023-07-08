@@ -1,10 +1,10 @@
-import axios from "axios"
+import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://vtrace-backend.herokuapp.com/api",
+    baseURL: "https://vtrace-backend.onrender.com",
     // baseURL: "http://localhost:5000/api",
     withCredentials: true,
-})
+});
 
 //Establisment Authentication
 
@@ -16,11 +16,11 @@ export async function getAdminLogs() {
             headers: {
                 auth_token: localStorage.getItem("vtraceAdminToken"),
             },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "No recent logins." }
+        console.error(error);
+        return { success: false, message: "No recent logins." };
     }
 }
 export async function getAdminList() {
@@ -31,11 +31,11 @@ export async function getAdminList() {
             headers: {
                 auth_token: localStorage.getItem("vtraceAdminToken"),
             },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "No recent logins." }
+        console.error(error);
+        return { success: false, message: "No recent logins." };
     }
 }
 
@@ -48,11 +48,11 @@ export async function createAdmin(password) {
                 auth_token: localStorage.getItem("vtraceAdminToken"),
             },
             data: { password: password },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "No recent logins." }
+        console.error(error);
+        return { success: false, message: "No recent logins." };
     }
 }
 
@@ -65,11 +65,11 @@ export async function updateAdmin(username, password) {
                 auth_token: localStorage.getItem("vtraceAdminToken"),
             },
             data: { editUsername: username, password: password },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "No recent logins." }
+        console.error(error);
+        return { success: false, message: "No recent logins." };
     }
 }
 
@@ -82,11 +82,11 @@ export async function getScanCount() {
                 auth_token: localStorage.getItem("vtraceAdminToken"),
             },
             data: { dateTime: new Date().toISOString() },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "No recent logins." }
+        console.error(error);
+        return { success: false, message: "No recent logins." };
     }
 }
 
@@ -99,11 +99,11 @@ export async function getAdminUserLogs(date, match) {
                 auth_token: localStorage.getItem("vtraceAdminToken"),
             },
             data: { dateTime: new Date(date).toISOString(), match: match },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "No recent logins." }
+        console.error(error);
+        return { success: false, message: "No recent logins." };
     }
 }
 
@@ -116,10 +116,10 @@ export async function getEstablishments(match) {
                 auth_token: localStorage.getItem("vtraceAdminToken"),
             },
             data: { match: match },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "No recent logins." }
+        console.error(error);
+        return { success: false, message: "No recent logins." };
     }
 }

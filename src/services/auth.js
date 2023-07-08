@@ -1,10 +1,10 @@
-import axios from "axios"
+import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://vtrace-backend.herokuapp.com/api",
+    baseURL: "https://vtrace-backend.onrender.com",
     // baseURL: "http://localhost:5000/api",
     withCredentials: true,
-})
+});
 
 //Individual Authentication
 
@@ -17,21 +17,21 @@ export async function getIndividual(userId) {
                 auth_token: localStorage.getItem("vtraceToken"),
             },
             data: { userId: userId },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to create user." }
+        console.error(error);
+        return { success: false, message: "Failed to create user." };
     }
 }
 
 export async function createIndividual(data) {
     try {
-        const response = await api.post("/users/create", data)
-        return response.data
+        const response = await api.post("/users/create", data);
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to create user." }
+        console.error(error);
+        return { success: false, message: "Failed to create user." };
     }
 }
 export async function updateIndividual(data) {
@@ -43,11 +43,11 @@ export async function updateIndividual(data) {
                 auth_token: localStorage.getItem("vtraceToken"),
             },
             data: data,
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to create user." }
+        console.error(error);
+        return { success: false, message: "Failed to create user." };
     }
 }
 
@@ -60,11 +60,11 @@ export async function updateIndividualPassword(data) {
                 auth_token: localStorage.getItem("vtraceToken"),
             },
             data: data,
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to create user." }
+        console.error(error);
+        return { success: false, message: "Failed to create user." };
     }
 }
 
@@ -77,14 +77,14 @@ export async function individualLogin(userId, password) {
                 auth_token: localStorage.getItem("vtraceToken"),
             },
             data: { userId: userId, password: password },
-        })
+        });
         if (response.data.success) {
-            localStorage.setItem("vtraceToken", response.data.token)
+            localStorage.setItem("vtraceToken", response.data.token);
         }
-        return response.data
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to login." }
+        console.error(error);
+        return { success: false, message: "Failed to login." };
     }
 }
 
@@ -97,21 +97,21 @@ export async function checkIndividualLoggedIn(userId, password) {
                 auth_token: localStorage.getItem("vtraceToken"),
             },
             data: { userId: userId, password: password },
-        })
+        });
 
-        return response.data
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to login." }
+        console.error(error);
+        return { success: false, message: "Failed to login." };
     }
 }
 
 export async function individualLogout() {
     try {
-        await localStorage.removeItem("vtraceToken")
+        await localStorage.removeItem("vtraceToken");
         // await api.get("/users/logout")
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
 
@@ -124,10 +124,10 @@ export async function passwordMatched(userId, password) {
                 auth_token: localStorage.getItem("vtraceToken"),
             },
             data: { userId: userId, password: password },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to login." }
+        console.error(error);
+        return { success: false, message: "Failed to login." };
     }
 }

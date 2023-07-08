@@ -1,10 +1,10 @@
-import axios from "axios"
+import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://vtrace-backend.herokuapp.com/api",
+    baseURL: "https://vtrace-backend.onrender.com",
     // baseURL: "http://localhost:5000/api",
     withCredentials: true,
-})
+});
 
 //Establisment Authentication
 export async function getEstablishment(establishmentId) {
@@ -16,21 +16,21 @@ export async function getEstablishment(establishmentId) {
                 auth_token: localStorage.getItem("vtraceEstToken"),
             },
             data: { establishmentId: establishmentId },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to create user." }
+        console.error(error);
+        return { success: false, message: "Failed to create user." };
     }
 }
 
 export async function createEstablishment(data) {
     try {
-        const response = await api.post("/establishments/create", data)
-        return response.data
+        const response = await api.post("/establishments/create", data);
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to create user." }
+        console.error(error);
+        return { success: false, message: "Failed to create user." };
     }
 }
 export async function updateEstablishment(data) {
@@ -42,11 +42,11 @@ export async function updateEstablishment(data) {
                 auth_token: localStorage.getItem("vtraceEstToken"),
             },
             data: data,
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to create user." }
+        console.error(error);
+        return { success: false, message: "Failed to create user." };
     }
 }
 
@@ -59,11 +59,11 @@ export async function updateEstablishmentPassword(data) {
                 auth_token: localStorage.getItem("vtraceEstToken"),
             },
             data: data,
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to create user." }
+        console.error(error);
+        return { success: false, message: "Failed to create user." };
     }
 }
 
@@ -76,16 +76,16 @@ export async function establishmentLogin(establishmentId, password) {
                 auth_token: localStorage.getItem("vtraceEstToken"),
             },
             data: { establishmentId: establishmentId, password: password },
-        })
+        });
 
         if (response.data.success) {
-            localStorage.setItem("vtraceEstToken", response.data.token)
+            localStorage.setItem("vtraceEstToken", response.data.token);
         }
 
-        return response.data
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to login." }
+        console.error(error);
+        return { success: false, message: "Failed to login." };
     }
 }
 
@@ -98,19 +98,19 @@ export async function checkEstablishmentLoggedIn(establishmentId, password) {
                 auth_token: localStorage.getItem("vtraceEstToken"),
             },
             data: { establishmentId: establishmentId, password: password },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to login." }
+        console.error(error);
+        return { success: false, message: "Failed to login." };
     }
 }
 
 export async function estabalishmentLogout() {
     try {
-        await localStorage.removeItem("vtraceEstToken")
+        await localStorage.removeItem("vtraceEstToken");
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
 
@@ -123,10 +123,10 @@ export async function passwordMatched(establishmentId, password) {
                 auth_token: localStorage.getItem("vtraceEstToken"),
             },
             data: { establishmentId: establishmentId, password: password },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to login." }
+        console.error(error);
+        return { success: false, message: "Failed to login." };
     }
 }

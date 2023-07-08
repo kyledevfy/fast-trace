@@ -1,10 +1,10 @@
-import axios from "axios"
+import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://vtrace-backend.herokuapp.com/api",
+    baseURL: "https://vtrace-backend.onrender.com",
     // baseURL: "http://localhost:5000/api",
     withCredentials: true,
-})
+});
 
 export async function getIndividualLogsByDate(userId, dateTime) {
     try {
@@ -15,11 +15,11 @@ export async function getIndividualLogsByDate(userId, dateTime) {
                 auth_token: localStorage.getItem("vtraceToken"),
             },
             data: { userId: userId, dateTime: dateTime },
-        })
+        });
 
-        return response.data
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to get user logs." }
+        console.error(error);
+        return { success: false, message: "Failed to get user logs." };
     }
 }

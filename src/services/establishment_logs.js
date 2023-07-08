@@ -1,10 +1,10 @@
-import axios from "axios"
+import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://vtrace-backend.herokuapp.com/api",
+    baseURL: "https://vtrace-backend.onrender.com",
     // baseURL: "http://localhost:5000/api",
     withCredentials: true,
-})
+});
 
 export async function getEstablishmentLogsByDate(establishmentId, dateTime) {
     try {
@@ -15,10 +15,10 @@ export async function getEstablishmentLogsByDate(establishmentId, dateTime) {
                 auth_token: localStorage.getItem("vtraceEstToken"),
             },
             data: { establishmentId: establishmentId, dateTime: dateTime },
-        })
-        return response.data
+        });
+        return response.data;
     } catch (error) {
-        console.error(error)
-        return { success: false, message: "Failed to get establishment logs." }
+        console.error(error);
+        return { success: false, message: "Failed to get establishment logs." };
     }
 }
